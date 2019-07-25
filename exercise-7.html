@@ -8,13 +8,29 @@
     /*
     Make a Todo List
 
-    0. Make it so that after entering the task description, in the text field and clicking the "Add Task" button, a new task appears inside the element with the id todo-list.
+    0. Make it so that after entering the task description, in the text field and 
+    clicking the "Add Task" button, a new task appears inside the element with the 
+    id todo-list.
     1. the ability to remove tasks (add an x button)
     2. the ability to check off tasks - strikes them out wo removing (add a checkbox)
     3. the ability to delete a task
     4. the ability to edit an existing task
 
     */
+   $(function() {
+     $('#add-button').on('click', (e) => {
+      $('#add-button').find($('input').val());
+      var val = $('input').val();
+      $('ul').append('<li>' + val +'<br>'+'<input type="submit" class="edit" value="Edit">'+'<input type="submit" class="delete" value="X">' +'</li>');
+     });
+     $('#todo-list').on('click', '.edit', function() {
+       $(this).parent().attr('contenteditable','true').focus();
+     });
+     $('#todo-list').on('click', '.delete', function(){
+       $(this).parent().remove();
+     });
+     
+     })
     </script>
     <style>
     #wrapper {
@@ -32,7 +48,7 @@
       <input id="description" type="text" name="description">
       <button id="add-button">Add Task</button>
       <ul id="todo-list">
-        <li>Feed the cat</li>
+        <li>Feed the cat <input type="submit" class="delete" value="X"></li>
       </ul>
     </div>
   </body>
