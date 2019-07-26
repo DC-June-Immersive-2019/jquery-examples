@@ -21,7 +21,7 @@
      $('#add-button').on('click', (e) => {
       $('#add-button').find($('input').val());
       var val = $('input').val();
-      $('ul').append('<li>' + val +'<br>'+'<input type="submit" class="edit" value="Edit">'+'<input type="submit" class="delete" value="X">' +'</li>');
+      $('ul').append('<li>' + val +'<br>'+'<input type="submit" class="edit" value="Edit">'+'<input type="submit" class="delete" value="X">'+ '<input type="checkbox">' +'</li>');
      });
      $('#todo-list').on('click', '.edit', function() {
        $(this).parent().attr('contenteditable','true').focus();
@@ -29,7 +29,16 @@
      $('#todo-list').on('click', '.delete', function(){
        $(this).parent().remove();
      });
-     
+     var input = $("li input:checkbox")
+      .wrap ("<span></span>")
+      .parent()
+      .css({
+        background:"gray",
+        border: "2px red solid"
+      });
+    $("#todo-list").on('click', "li input:checkbox" ,function(){
+      $(this).parent('li').css('textDecoration','line-through');
+    })
      })
     </script>
     <style>
