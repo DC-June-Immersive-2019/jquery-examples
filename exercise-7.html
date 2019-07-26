@@ -37,9 +37,13 @@
         border: "2px red solid"
       });
     $("#todo-list").on('click', "li input:checkbox" ,function(){
-      $(this).parent('li').css('textDecoration','line-through');
-    })
-     })
+      if ($(this).is(":checked")){
+        $(this).parent('li').css('textDecoration','line-through');
+    } else {
+        $(this).parent('li').css('textDecoration','none');
+    }
+    });
+     });
     </script>
     <style>
     #wrapper {
